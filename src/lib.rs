@@ -78,6 +78,7 @@ async fn salvo(
             Router::with_path("pinyas")
                 .post(create_pinya)
                 .get(get_all_pinyas)
+                .options(empty_handler)
                 .push(Router::with_path("<uid>").get(get_pinya))
         );
         // .push(
