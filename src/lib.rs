@@ -70,7 +70,7 @@ async fn salvo(
 
     let cors_handler = Cors::builder()
         .allow_origin("http://localhost:8080")
-        .allow_methods(vec!["GET", "POST", "DELETE"])
+        .allow_methods(vec!["OPTIONS", "GET", "POST", "DELETE"])
         .build();
 
     let router = Router::with_hoop(cors_handler)
@@ -78,7 +78,7 @@ async fn salvo(
             Router::with_path("pinyas")
                 .post(create_pinya)
                 .get(get_all_pinyas)
-                .options(empty_handler)
+                // .options(empty_handler)
                 .push(Router::with_path("<uid>").get(get_pinya))
         );
         // .push(
